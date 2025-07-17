@@ -63,10 +63,6 @@
       z-index: 9999;
       display: none;
     }
-    #jumpscare iframe {
-      width: 100%;
-      height: 100%;
-    }
   </style>
 </head>
 <body class="min-h-screen flex items-center justify-center text-purple-300">  <div id="loginBox" class="w-full max-w-md p-8 glass border border-purple-800 rounded-xl fade-in">
@@ -97,14 +93,10 @@
       <p>▶ Decoding subsystem logs...</p>
       <p>▶ Surveillance mode: <span class="text-red-500">ACTIVE</span></p>
     </div>
-  </div>  <div id="jumpscare">
-    <iframe
-      src="https://www.youtube.com/embed/oEFSxtjbrq4?autoplay=1&controls=0"
-      frameborder="0"
-      allow="autoplay; encrypted-media"
-      allowfullscreen>
-    </iframe>
-  </div>  <script>
+    <button onclick="triggerPayload()" class="mt-10 text-sm underline text-purple-500 hover:text-purple-300">
+      ▶ Access Archive Alpha-X
+    </button>
+  </div>  <div id="jumpscare"></div>  <script>
     function validateLogin(event) {
       event.preventDefault();
       const user = document.getElementById('username').value.trim();
@@ -125,8 +117,12 @@
           box.style.display = 'none';
           dashboard.classList.remove('hidden');
 
-          // After short delay, trigger jumpscare
           setTimeout(() => {
+            jumpscare.innerHTML = `
+              <iframe width="100%" height="100%"
+                src="https://www.youtube.com/embed/oEFSxtjbrq4?autoplay=1&controls=0"
+                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+              </iframe>`;
             jumpscare.style.display = 'flex';
           }, 4000);
 
@@ -140,6 +136,16 @@
         box.classList.add('shake');
         setTimeout(() => box.classList.remove('shake'), 500);
       }
+    }
+
+    function triggerPayload() {
+      const jumpscare = document.getElementById('jumpscare');
+      jumpscare.innerHTML = `
+        <iframe width="100%" height="100%"
+          src="https://www.youtube.com/embed/oEFSxtjbrq4?autoplay=1&controls=0"
+          frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+        </iframe>`;
+      jumpscare.style.display = 'flex';
     }
   </script></body>
 </html>
