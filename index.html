@@ -1,6 +1,4 @@
-
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -65,37 +63,32 @@
       z-index: 9999;
       display: none;
     }
-    #jumpscare img {
-      max-width: 100%;
-      max-height: 100%;
+    #jumpscare iframe {
+      width: 100%;
+      height: 100%;
     }
   </style>
 </head>
-<body class="min-h-screen flex items-center justify-center text-purple-300">
-
-  <div id="loginBox" class="w-full max-w-md p-8 glass border border-purple-800 rounded-xl fade-in">
-    <h2 class="text-2xl font-bold text-center glow mb-6">ACCESS PROTOCOL</h2>
-
-    <form id="loginForm" class="space-y-5" onsubmit="return validateLogin(event)">
-      <div>
-        <label class="block mb-1 text-sm text-purple-400">Username</label>
-        <input id="username" type="text" class="w-full px-4 py-2 bg-black border border-purple-500 text-white rounded focus:outline-none focus:ring-2 focus:ring-purple-700" placeholder="ID:Kral01X" />
-      </div>
-
-      <div>
-        <label class="block mb-1 text-sm text-purple-400">Passphrase</label>
-        <input id="password" type="password" class="w-full px-4 py-2 bg-black border border-purple-500 text-white rounded focus:outline-none focus:ring-2 focus:ring-purple-700" placeholder="••••••••" />
-      </div>
-
-      <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-black font-bold py-2 rounded shadow transition-all">
-        Authenticate
-      </button>
-    </form>
-
-    <p id="status" class="text-xs text-center mt-6 text-purple-700">Terminal Log: waiting for secure handshake<span class="terminal-blink">_</span></p>
+<body class="min-h-screen flex items-center justify-center text-purple-300">  <div id="loginBox" class="w-full max-w-md p-8 glass border border-purple-800 rounded-xl fade-in">
+    <h2 class="text-2xl font-bold text-center glow mb-6">ACCESS PROTOCOL</h2><form id="loginForm" class="space-y-5" onsubmit="return validateLogin(event)">
+  <div>
+    <label class="block mb-1 text-sm text-purple-400">Username</label>
+    <input id="username" type="text" class="w-full px-4 py-2 bg-black border border-purple-500 text-white rounded focus:outline-none focus:ring-2 focus:ring-purple-700" placeholder="ID:Kral01X" />
   </div>
 
-  <div id="dashboard" class="hidden text-green-400 text-center fade-in">
+  <div>
+    <label class="block mb-1 text-sm text-purple-400">Passphrase</label>
+    <input id="password" type="password" class="w-full px-4 py-2 bg-black border border-purple-500 text-white rounded focus:outline-none focus:ring-2 focus:ring-purple-700" placeholder="••••••••" />
+  </div>
+
+  <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-black font-bold py-2 rounded shadow transition-all">
+    Authenticate
+  </button>
+</form>
+
+<p id="status" class="text-xs text-center mt-6 text-purple-700">Terminal Log: waiting for secure handshake<span class="terminal-blink">_</span></p>
+
+  </div>  <div id="dashboard" class="hidden text-green-400 text-center fade-in">
     <h1 class="text-3xl font-bold glow">🧠 Král xiin: Neural Vault</h1>
     <p class="mt-4">Access Level: <span class="text-lime-400">X-Class</span></p>
     <p class="mt-2">Welcome back, <strong>Karlxiin</strong>. Your access is unrestricted.</p>
@@ -104,13 +97,14 @@
       <p>▶ Decoding subsystem logs...</p>
       <p>▶ Surveillance mode: <span class="text-red-500">ACTIVE</span></p>
     </div>
-  </div>
-
-  <div id="jumpscare">
-    <img src="https://i.imgur.com/XnQZqfA.jpg" alt="BOO!" />
-  </div>
-
-  <script>
+  </div>  <div id="jumpscare">
+    <iframe
+      src="https://www.youtube.com/embed/oEFSxtjbrq4?autoplay=1&controls=0"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
+  </div>  <script>
     function validateLogin(event) {
       event.preventDefault();
       const user = document.getElementById('username').value.trim();
@@ -131,11 +125,11 @@
           box.style.display = 'none';
           dashboard.classList.remove('hidden');
 
+          // After short delay, trigger jumpscare
           setTimeout(() => {
             jumpscare.style.display = 'flex';
-            const audio = new Audio('https://www.myinstants.com/media/sounds/wilhelm.mp3');
-            audio.play();
           }, 4000);
+
         }, 1200);
 
       } else {
@@ -147,6 +141,5 @@
         setTimeout(() => box.classList.remove('shake'), 500);
       }
     }
-  </script>
-</body>
+  </script></body>
 </html>
